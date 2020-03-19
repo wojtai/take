@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:tabView>
+            <p:tab title="Form">
+                <h:form>
+                    <p:spinner min="0" max="42" value="#{backingBean.v1}"/>
+                    <h:outputText value="+"/>
+                    <p:spinner min="0" max="42" value="#{backingBean.v2}"/>
+                    <p:commandButton value="Calculate" action="#{backingBean.sum}" update="result growl df" ajax="true"/>
+                    <h:outputText value="="/>
+                    <h:outputText id="result" value="#{backingBean.result}"/>
+                    <br/>
+                    <h:outputText id="df" value="#{backingBean.date}"/>
+                    <p:growl id="growl"/>
+                </h:form>
+            </p:tab>
+            <p:tab title="Table">
+                <p:dataTable var="student" value="#{studentsBean.students}" paginator="true" rows="10">
+
+                    <p:column headerText="First Name" sortBy="#{student.firstName}">
+                        #{student.firstName}
+                    </p:column>
+                    <p:column headerText="Last Name" sortBy="#{student.lastName}">
+                        #{student.lastName}
+                    </p:column>
+                    <p:column headerText="Average" sortBy="#{student.avg}">
+                        #{student.avg}
+                    </p:column>
+                </p:dataTable>
+            </p:tab>
+            <p:tab title="Chart">
+                <p:chart type="line" model="#{chartBean.model}"  widgetVar="chart"/>
+                <br />    
+                <p:commandButton type="button" value="Reset" icon="pi pi-ban" onclick="PF('chart').resetZoom()"/>
+            </p:tab>
+        </p:tabView>
+    </h:body>
+</html>
+
