@@ -1,7 +1,6 @@
 # root dir files
 Payara*
 scripts
-Project*
 # rest
 *.zip
 *target*

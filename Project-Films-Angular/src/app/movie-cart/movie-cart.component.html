@@ -1,0 +1,85 @@
+<div class="d-flex flex-nowrap flex-row">
+  <div class="col-sm-6">
+    <h1>Movies List</h1>
+    <div class="form-inline mb-5">
+      <div class="form-group mr-5">
+        <label for="movieCurrency">Currency: </label>
+        <select class="form-control ml-2" id="movieCurrency" [(ngModel)]="selectedMoviesCurrency" (ngModelChange)="filter()">
+          <option value="PLN">PLN</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+      <div class="form-group mr-5">
+        <label for="movieCategory">Category: </label>
+        <select class="form-control ml-2" id="movieCategory" [(ngModel)]="selectedMoviesCategory" (ngModelChange)="filter()">
+          <option value="{{null}}">-</option>
+          <option *ngFor="let c of categories" value="{{MovieCategory[c].replace('-', '_')}}">{{MovieCategory[c]}}</option>
+        </select>
+      </div>
+      <span>{{movies.length}} elements</span>
+    </div>
+
+    <p *ngIf="movies.length == 0">No movies available</p>
+    <table *ngIf="movies.length > 0" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let m of movies">
+        <td>{{m.title}}</td>
+        <td>{{m.category}}</td>
+        <td>{{m.year}}</td>
+        <td>{{m.price | currency:selectedMoviesCurrency}}</td>
+        <td> <a class="btn btn-secondary" [routerLink]="'/movie'" [state]="{data: m}">Details</a></td>
+        <td> <button class="btn btn-primary" (click)="addToCart(m.id)">Add</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-6">
+    <h1>Cart</h1>
+    <div class="form-inline mb-5">
+      <div class="form-group mr-5">
+        <label for="cartCurrency">Currency: </label>
+        <select class="form-control ml-2" id="cartCurrency" [(ngModel)]="selectedCartCurrency" (ngModelChange)="getCart()">
+          <option value="PLN">PLN</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+      <span class="mr-3" >Value: {{cartValue() | currency:selectedCartCurrency}}</span>
+      <span class="mr-3">{{cart.length}} elements</span>
+      <button class="btn btn-danger ml-5" (click)="clearCart()">Clear</button>
+    </div>
+
+    <p *ngIf="cart.length == 0">No movies selected</p>
+    <table *ngIf="cart.length > 0" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let m of cart">
+        <td>{{m.title}}</td>
+        <td>{{m.category}}</td>
+        <td>{{m.year}}</td>
+        <td>{{m.price | currency:selectedCartCurrency}}</td>
+        <td> <a class="btn btn-secondary" [routerLink]="'/movie'" [state]="{data: m}">Details</a></td>
+        <td> <button class="btn btn-outline-secondary" (click)="removeFromCart(m.id)">Remove</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

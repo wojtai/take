@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card mt-5 mb-5" *ngIf="movie">
+    <div class="card-body">
+      <h1>{{movie.title}}</h1>
+      <table class="table table-hover">
+        <tbody>
+        <tr>
+          <td>Year</td><td>{{movie.year}}</td>
+        </tr>
+        <tr>
+          <td>Category</td><td>{{movie.category}}</td>
+        </tr>
+        <tr>
+          <td>Defector</td><td>{{movie.director}}</td>
+        </tr>
+        <tr>
+          <td>Cast</td><td>{{movie.cast}}</td>
+        </tr>
+        <tr>
+          <td>Story</td><td>{{movie.story}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!movie">
+    Movie not available
+  </div>
+  <a class="btn btn-primary" type="button" [routerLink]="'/'">Back</a>
+</div>
+
+
