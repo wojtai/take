@@ -5,3 +5,12 @@ scripts
 *.zip
 *target*
 *.idea
+/Lab-5/MDBLab/nbproject/private/
+/Lab-5/MDBLab/MDBLab-war/nbproject/private/
+/Lab-5/MDBLab/MDBLab-ejb/nbproject/private/
+/Lab-5/MDBLab/MDBLab-ejb/build/
+/Lab-5/MDBLab/MDBLab-ejb/dist/
+/Lab-5/MDBLab/MDBLab-war/build/
+/Lab-5/MDBLab/build/
+/Lab-5/MDBLab/MDBLab-war/dist/
+/Lab-5/MDBLab/dist/
