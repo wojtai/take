@@ -51,7 +51,7 @@ public class NewsMDB implements MessageListener {
             if (message instanceof TextMessage) {
                 msg = (TextMessage) message;
                 NewsItem e = new NewsItem();
-                String text[] = msg.getText().split("|");
+                String text[] = msg.getText().split("\\|");
                 e.setHeading(text[0]);
                 e.setBody(text[1]);
                 em.persist(e);
