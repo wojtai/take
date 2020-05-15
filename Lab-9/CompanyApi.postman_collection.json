@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "a3be122c-46a6-4363-95ed-4b057554ae5c",
+		"name": "CompanyApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:51085/api/departments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51085",
+					"path": [
+						"api",
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get n. 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:51085/api/departments/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51085",
+					"path": [
+						"api",
+						"departments",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Janitor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51085/api/departments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51085",
+					"path": [
+						"api",
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"departmentId\": 5,\n\t\"name\": \"SuperJanitor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51085/api/departments/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51085",
+					"path": [
+						"api",
+						"departments",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:51085/api/departments/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51085",
+					"path": [
+						"api",
+						"departments",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
