@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#calc").click(function () {
+                var x = $('#x').val();
+                var y = $('#y').val();
+                console.log(x, y);
+                $.ajax('/api/math', { data: { x, y } }).done((data) => {
+                    console.log(data);
+                    $('#sum').html(data.sum);
+                    $('#difference').html(data.difference);
+                    $('#product').html(data.product);
+                    $('#quotient').html(data.quotient);
+                });
+     });
+     });
+    </script>
+    <script type="text/javascript">
+        function vanilla() {
+            var x = document.getElementById('x').value;
+            var y = document.getElementById('y').value;
+            console.log(x, y);
+            var req = new XMLHttpRequest();
+            req.open('GET', '/api/math?x=' + x + '&y=' + y, true);
+            req.onreadystatechange = function (event) {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        // console.log(req.responseText);
+                        var result = JSON.parse(req.response);
+                        console.log(result);
+                        document.getElementById('sum').textContent = result.sum;
+                        document.getElementById('difference').textContent = result.difference;
+                        document.getElementById('product').textContent = result.product;
+                        document.getElementById('quotient').textContent = result.quotient;
+                    }
+                    else
+                        console.log("Error");
+                }
+            };
+            req.setRequestHeader("Content", "application/json");
+            req.send(null);
+        }
+    </script>
+    <div>
+        <h1>Calculations</h1>
+        <form>
+            x = <input type="text" id="x" />
+            y = <input type="text" id="y" />
+            <input type="button" id="calc" value="Call API (jQuery)" />
+        </form>
+        <br/>
+        <input type="button" id="vanilla" onclick="vanilla()" value="Call API (vanilla JS)" />
+        <!--button outside form so onclick works-->
+        <br />
+        x + y = <span id="sum"></span><br />
+        x - y = <span id="difference"></span><br />
+        x * y = <span id="product"></span><br />
+        x / y = <span id="quotient"></span><br />
+    </div>
+
+</body>
+</html>
